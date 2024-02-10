@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,5 @@ Route::put('/libros/{book}', [BooksController::class, 'update'])->name('books.up
 Route::delete('/libros/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
 
 
-Route::get('/contacto', function () {
-    return view('pages.contact');
-})->name('contact');
+Route::get('/contacto', [ContactController::class, 'show'])->name('contact');
+Route::post('mensaje-contacto', [ContactController::class, 'sendContactEmail'])->name('contact-form.send');
