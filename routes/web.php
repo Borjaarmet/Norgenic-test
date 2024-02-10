@@ -26,8 +26,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get(LaravelLocalization::transRoute('routes.create'), [BooksController::class, 'create'])->name('books.create');
     Route::post('/libros', [BooksController::class, 'store'])->name('books.store');
     Route::get(LaravelLocalization::transRoute('routes.edit'), [BooksController::class, 'edit'])->name('books.edit');
-    Route::put(LaravelLocalization::transRoute('routes.update'), [BooksController::class, 'update'])->name('books.update');
-    Route::delete(LaravelLocalization::transRoute('routes.destroy'), [BooksController::class, 'destroy'])->name('books.destroy');
+    Route::put('/libros/{book}', [BooksController::class, 'update'])->name('books.update');
+    Route::delete('/libros/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
 
 
     Route::get(LaravelLocalization::transRoute('routes.contact'), [ContactController::class, 'show'])->name('contact');
