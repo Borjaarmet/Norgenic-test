@@ -3,6 +3,7 @@
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +15,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect','localizationRedirect', 'localeViewPath']],function()
+{
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+    Route::get('/', function () {
+        return view('pages.home');
+    })->name('home');
 
-Route::get('/libros', [BooksController::class, 'index'])->name('books.index');
-Route::get('/libros/create', [BooksController::class, 'create'])->name('books.create');
-Route::post('/libros', [BooksController::class, 'store'])->name('books.store');
-Route::get('/libros/{book}', [BooksController::class, 'show'])->name('books.show');
-Route::get('/libros/{book}/edit', [BooksController::class, 'edit'])->name('books.edit');
-Route::put('/libros/{book}', [BooksController::class, 'update'])->name('books.update');
-Route::delete('/libros/{book}', [BooksController::class, 'destroy'])->name('books.destroy');
+    Route::get(LaravelLocalization::transRoute('routes.books'), [BooksController::class, 'index'])->name('books.index');
+    Route::get(LaravelLocalization::transRoute('routes.create'), [BooksController::class, 'create'])->name('books.create');
+    Route::post('/libros', [BooksController::class, 'store'])->name('books.store');
+    Route::get(LaravelLocalization::transRoute('routes.edit'), [BooksController::class, 'edit'])->name('books.edit');
+    Route::put(LaravelLocalization::transRoute('routes.update'), [BooksController::class, 'update'])->name('books.update');
+    Route::delete(LaravelLocalization::transRoute('routes.destroy'), [BooksController::class, 'destroy'])->name('books.destroy');
 
 
-Route::get('/contacto', [ContactController::class, 'show'])->name('contact');
-Route::post('mensaje-contacto', [ContactController::class, 'sendContactEmail'])->name('contact-form.send');
+    Route::get(LaravelLocalization::transRoute('routes.contact'), [ContactController::class, 'show'])->name('contact');
+    Route::post('mensaje-contacto', [ContactController::class, 'sendContactEmail'])->name('contact-form.send');
+
+});

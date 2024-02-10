@@ -2,17 +2,17 @@
 @section('content')
 
 <div class="container">
-    <h1 class="display-4 my-5">Listado de Libros</h1>
+    <h1 class="display-4 my-5">{{ __('books.title-catalogue') }}</h1>
     <div class="mb-3">
-        <a href="{{ route('books.create') }}" class="btn btn-primary">Crear Libro</a>
+        <a href="{{ route('books.create') }}" class="btn btn-primary">{{ __('books.create-book') }}</a>
     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Acciones</th> <!-- Columna para las acciones -->
+                <th>#</th>
+                <th>{{ __('books.title') }}</th>
+                <th>{{ __('books.author') }}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -22,11 +22,11 @@
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author }}</td>
                     <td>
-                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-secondary">Editar</a>
+                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-secondary">{{ __('books.edit') }}</a>
                         <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este libro?')">Eliminar</button>
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este libro?')">{{ __('books.delete') }}</button>
                         </form>
                     </td>
                 </tr>

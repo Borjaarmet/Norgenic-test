@@ -26,5 +26,6 @@
             <div class="alert alert-success mt-3">{{ session('contact_success') }}</div>
         @endif
     </form>
+    <p>{{__('contact.title-test')}}</p>
 </div>
 @endsection

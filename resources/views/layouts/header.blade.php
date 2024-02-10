@@ -3,10 +3,7 @@
         <a class="navbar-brand mr-5" href="{{ route('home') }}">
             Visagov
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse flex">
+        <div class="collapse navbar-collapse flex justify-between">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link mr-3 @if(Request::is('libros')) active @endif"" aria-current="books" href="{{ route('books.index') }}">Libros</a>
@@ -14,7 +11,12 @@
                 <li class="nav-item">
                     <a class="nav-link @if(Request::is('contacto')) active @endif" aria-current="contact" href="{{ route('contact') }}">Contacto</a>
                 </li>
-            </ul>          
+            </ul>        
         </div>
+        <div class="submenu-container-lang">
+            <div class="submenu-lang flex">
+                <x-locale-selector :landing-page="$landingPage ?? null"/>
+            </div>
+        </div>  
     </div>
 </nav>
