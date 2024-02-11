@@ -16,7 +16,7 @@ class ContactController extends Controller
     {
         $contactData = $request->validate([
             'contact_email' => 'required|email',
-            'contact_message' => 'required|string',
+            'contact_message' => 'required|string|min:12',
         ]);
         Lead::create($contactData);
   

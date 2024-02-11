@@ -142,10 +142,10 @@ return [
     */
 
     'custom' => [
-        'contact_message.required' => 'The message field is required.',
-        'contact_message.min' => 'The message field must have at least :min characters.',
-        'contact_email.required' => 'The email field is required.',
-        'contact_email.email' => 'Please enter a valid email.',
+        'contact_message.required' => 'El campo mensaje es obligatorio.',
+        'contact_message.min' => 'El campo mensaje debe tener almenos :min caracteres.',
+        'contact_email.required' => 'El campo de correo electrónico es obligatorio.',
+        'contact_email.email' => 'Ingresa un correo electrónico válido.',
     ],
 
 
