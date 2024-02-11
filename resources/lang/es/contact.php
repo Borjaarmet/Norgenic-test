@@ -1,5 +1,8 @@
 <?php
 
 return [
-    'title-test' => 'Titulo ES',
+    'contact' => 'Contacto',
+    'email' => 'Correo',
+    'message' => 'Mensaje',
+    'send' => 'Enviar',
 ];
