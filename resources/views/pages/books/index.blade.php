@@ -6,6 +6,11 @@
     <div class="mb-3">
         <a href="{{ route('books.create') }}" class="btn btn-primary">{{ __('books.create-book') }}</a>
     </div>
+    @if (session('success'))
+        <div id="succesMessage" class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <table class="table">
         <thead>
             <tr>
@@ -36,3 +41,11 @@
 </div>
 
 @endsection
+
+@push('scripts')
+    <script>
+        setTimeout(function() {
+            $('#successMessage').fadeOut('fast');
+        }, 3000);
+    </script>
+@endpush
